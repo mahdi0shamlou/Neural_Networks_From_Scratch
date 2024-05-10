@@ -1,5 +1,5 @@
 # First_my_artificial_neural_network
-This project is about the creation and development of a single neuron
+This project is about the creation and development of nerual networks
 
-### version 1
-in this veriosn singel neuron has only one input
+### Perceptron.py
+this file is a singel perceptron how dose learn and optimize 
