@@ -151,6 +151,9 @@ if __name__ == '__main__':
     show_points(x_data_set, y_data_set)
     plt.show
     W = create_wighet(x_data_set)
+    trues, flases = test(x_data_set, y_data_set, W)
+    print(f'true number is -> {trues}')
+    print(f'flases number is -> {flases}')
     W = learning(x_data_set, y_data_set, 100, W)
     print('------------------------')
     x, y = show_line_w(W)
