@@ -6,11 +6,15 @@ This file is a single perceptron that learns and optimizes.
 This perceptron is used for classification.
 
 > [!TIP]
-> how it works ?! this perceptron has a activation function and has a optimizer function if see any erro from output of activation function and real data send this data to optimaizer function and get new Wight from it and use from this for new calculate 
+> how it works ?! this perceptron has a activation function and has a optimizer function if see any difrent between output of activation function and real data send this data to optimaizer function and get new Wight from it and use from this for new calculate 
 
 ### Perceptron_liner_regression.py
 This file is a single perceptron that learns and optimizes.
 This perceptron is used for liner regression.
+
+> [!TIP]
+> how it works ?! this perceptron has a activation function(actuly it is just return of the input and do noting) and has a optimizer function if see any difrent between output of activation function and real data send this data to optimaizer function and get new Wight from it and use from this for new calculate this algorithm has small difreent from classification algorithms and this difrents in activation function and optimizer 
+
 
 ### Adaline.py
 this file is a single neuron from adaline model and algorithms.
