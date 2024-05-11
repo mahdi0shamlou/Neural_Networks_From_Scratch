@@ -43,6 +43,26 @@ def show_points(x_sets, y_sets):
     for i in range(0, len(x_sets)):
         plt.plot([x_sets[i][0]], [y_sets[i][0]], marker="o", color='black')
 
+def create_wighet(x_sets):
+    """
+    this methode create wighet from x_data_set
+    we create wight with len x_setes but add one wigh becuse we need bios in regression
+    :param x_sets:
+    :return:
+    """
+    W = []
+    for i in range(0, len(x_sets[0])+1):
+        W.append(random.randint(-10 ,10))
+    print(W)
+    return W
+def activation_func(net):
+    """
+    this methode is liner activation function
+    :param net:
+    :return:
+    """
+    return net
+
 
 if __name__ == '__main__':
     show_points(x_data_set, y_data_set)
