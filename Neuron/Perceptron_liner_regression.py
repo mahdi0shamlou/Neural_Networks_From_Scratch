@@ -55,6 +55,8 @@ def create_wighet(x_sets):
         W.append(random.randint(-10 ,10))
     print(W)
     return W
+
+
 def activation_func(net):
     """
     this methode is liner activation function
@@ -63,6 +65,17 @@ def activation_func(net):
     """
     return net
 
+
+def optimaize_error(w, e):
+    """
+    this methode get error and x_set[i] and w in stage[i] and change w in way to optimaze
+    :param w:
+    :param e:
+    :return:
+    """
+    for i in range(0, len(w)):
+        w[i] = w[i] + e
+    return w
 
 if __name__ == '__main__':
     show_points(x_data_set, y_data_set)
