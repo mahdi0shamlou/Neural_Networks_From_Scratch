@@ -74,9 +74,60 @@ def optimaize_error(w, e):
     :return:
     """
     for i in range(0, len(w)):
-        w[i] = w[i] + e
+        w[i] = w[i] + (0.1*e)
     return w
+def show_line_w(w):
+    """
+    this method get W and create line with it for plot
+    :param w:
+    :return:
+    """
+
+    x = np.linspace(-10, 10, 100)
+    y = (x * w[0]) + w[1]
+    return x, y
+def learning(x_data, y_data, number_iterition, W):
+    """
+    this methode get y and x data and learn from these and ...
+    :param x_data:
+    :param y_data:
+    :param number_iterition:
+    :param W:
+    :return:
+    """
+    for i in range(0, number_iterition):
+        random_d = random.randint(0, len(x_data)-1) # choses a random sampel for optimaization
+        net = 0 # create net for tershold
+
+        for z in range(0, len(x_data[random_d])):
+            net = net + (x_data[random_d][z]*W[z]) # sumtion of wixi
+        net += W[len(W)-1] # this is bios
+        f_resault = activation_func(net) # send it to activaition func for find a group for it
+        error = y_data[random_d][0] - f_resault # find error
+        print(error)
+        if error == 0:
+            continue
+        else:
+            x, y = show_line_w(W)
+            show_points(x_data_set, y_data_set)
+            plt.plot(x, y, '-r', label='W')
+
+            W = optimaize_error(W, error)
+            x, y = show_line_w(W)
+            plt.plot(x, y, '-b', label='W')
+
+    return W
+
 
 if __name__ == '__main__':
     show_points(x_data_set, y_data_set)
+    plt.show
+    W = create_wighet(x_data_set)
+
+    W = learning(x_data_set, y_data_set, 100, W)
+    print('------------------------')
+    x, y = show_line_w(W)
+    show_points(x_data_set, y_data_set)
+    plt.plot(x, y, '-r', label='LAST TRY')
     plt.show()
+    print(W)
