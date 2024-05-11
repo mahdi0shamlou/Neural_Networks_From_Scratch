@@ -3,8 +3,12 @@ This project is about the creation and development of nerual networks from scrat
 
 ### Perceptron.py
 This file is a single perceptron that learns and optimizes.
-This perceptron is used for classification and we will create another perceptron file and model for regression.
- 
+This perceptron is used for classification.
+
+### Perceptron_liner_regression.py
+This file is a single perceptron that learns and optimizes.
+This perceptron is used for liner regression.
+
 ### Adaline.py
 this file is a single neuron from adaline model and algorithms.
 
@@ -13,4 +17,5 @@ this file is a single neuron from LSTM model and algorithms.
 
 ### CNN.py
 this file is a single neuron from Convolutional neural network model and algorithms.
+
 
