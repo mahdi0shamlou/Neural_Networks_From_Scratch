@@ -22,7 +22,7 @@ This perceptron is used for liner regression.
 this file is a single neuron from adaline model and algorithms.
 
 > [!TIP]
->  How it works ?! This file is an adaline neuron and it optimizes own weight with Matrix calculations. we have a difference between adaline offline learning method and perceptron learning method . and that is in one single adaline neuron we can find best wight in offline learning method only with Matrix calculations.
+>  How it works ?! This file is an adaline neuron and it optimizes own weight with Matrix calculations. we have a difference between adaline offline learning method and perceptron learning method . and that is in one single adaline neuron we can find best wight in offline learning method only with Matrix calculations. And we dont need any online learning method like gradient descent.
 
 
 ### LSTM.py
