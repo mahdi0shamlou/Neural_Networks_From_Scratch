@@ -24,6 +24,8 @@ this file is a single neuron from adaline model and algorithms.
 > [!TIP]
 >  How it works ?! This file is an adaline neuron and it optimizes own weight with Matrix calculations. we have a difference between adaline offline learning method and perceptron learning method . and that is in one single adaline neuron we can find best wight in offline learning method only with Matrix calculations. And we dont need any online learning method like gradient descent.
 
+> [!WARNING]
+> But that is important you know that we can use gradient descent in adelaide for learning but we chose another way (offline learning method) because we already Implemented gradient descent in perceptrons file
 
 ### LSTM.py
 this file is a single neuron from LSTM model and algorithms.
