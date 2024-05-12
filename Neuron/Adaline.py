@@ -20,19 +20,19 @@ x_data_set = np.matrix([
 ])
 y_data_set = np.matrix([
     [2],
-    [4],
-    [6.1],
-    [8],
-    [10],
-    [12],
-    [14],
-    [16],
+    [3.9],
+    [6.2],
+    [8.3],
+    [9.2],
+    [11.7],
+    [14.4],
+    [16.2],
     [18],
-    [20.1],
-    [21.9],
-    [24],
-    [26],
-    [28]
+    [20.4],
+    [21.6],
+    [24.2],
+    [26.4],
+    [27.3]
 ])
 
 def Optimaize(x: np.matrix, y: np.matrix):
@@ -46,8 +46,20 @@ def Optimaize(x: np.matrix, y: np.matrix):
     W = x.T.dot(y) / (x.T.dot(x))
     return W
 
-if __name__ == '__main__':
-    print(x_data_set.shape)
-    print(x_data_set.T.shape)
 
-    pass
+def show(x , y, w):
+    for i in range(0, len(x)):
+        plt.plot([x.item(i)], [y.item(i)], marker="o", color='black')
+
+    x_line = np.linspace(0, 14, 100)
+    y_line = (x_line * w.item(0))
+    plt.plot(x_line, y_line, '-r', label='line')
+    plt.show()
+
+
+    return x, y
+if __name__ == '__main__':
+    W = Optimaize(x_data_set, y_data_set)
+    print(f'Wight is -> {W}')
+    show(x_data_set, y_data_set, W)
+
