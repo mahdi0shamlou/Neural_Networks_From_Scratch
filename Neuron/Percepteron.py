@@ -40,8 +40,8 @@ def activate_function(net):
 
 if __name__ == '__main__':
 
-    X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y 
+    X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-    print(f"x data sets : \n {X_data_set}")
-    print(f"y data sets : \n {Y_data_set}")
+    print(f"x data sets : {X_data_set.shape} \n {X_data_set}")
+    print(f"y data sets : {Y_data_set.shape} \n {Y_data_set}")
 
