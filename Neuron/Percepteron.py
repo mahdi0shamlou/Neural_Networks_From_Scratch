@@ -6,11 +6,12 @@ def create_data_sets():
      You can create your own x_data_sets and y_data_set
     :return:
     """
-    X_data_set = [[-2, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1], [7, 1], [10, 1], [-1, 1]]
-    Y_data_set = [
-        [(i[0] * 3) + 1] for i in X_data_set
+
+    x_data_set = [[-2], [2], [3], [4], [5], [6], [7], [10], [-1]]
+    y_data_set = [
+        [(i[0] * 3) + 1] for i in x_data_set
     ]
-    return X_data_set, Y_data_set
+    return x_data_set, y_data_set
 
 
 def create_matrix_from_data_sets(X_data_set, Y_data_set):
@@ -20,10 +21,20 @@ def create_matrix_from_data_sets(X_data_set, Y_data_set):
     :param Y_data_set:
     :return:
     """
-    X_data_set = np.matrix(X_data_set)
-    Y_data_set = np.matrix(Y_data_set)
-    return X_data_set, Y_data_set
+    for i in X_data_set:
+        i.append(1)
+    x_data_set = np.matrix(X_data_set)
+    y_data_set = np.matrix(Y_data_set)
+    return x_data_set, y_data_set
 
+
+def activate_function(net):
+    """
+    this is simoid function for activation functions
+    :param net:
+    :return:
+    """
+    return 1 / (1 + np.exp(-net))
 
 if __name__ == '__main__':
     X_data_set, Y_data_set = create_data_sets()
