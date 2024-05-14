@@ -2,6 +2,11 @@
 This project is about the creation and development of nerual networks from scratch
 
 ### Perceptron.py
+this is a one singel perceptron and work and optimize 
+
+
+
+### Perceptron_binary_classifire.py
 This file is a single perceptron that learns and optimizes.
 This perceptron is used for classification.
 
