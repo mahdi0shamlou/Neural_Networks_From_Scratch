@@ -1,6 +1,7 @@
 import numpy as np  # We need Numpy for matrix
 import random
 
+
 def create_data_sets():
     """
      You can create your own x_data_sets and y_data_set
@@ -14,17 +15,17 @@ def create_data_sets():
     return x_data_set, y_data_set
 
 
-def create_matrix_from_data_sets(X_data_set, Y_data_set):
+def create_matrix_from_data_sets(x_data_set, y_data_set):
     """
     we get data set and create matrix from them
-    :param X_data_set:
-    :param Y_data_set:
+    :param x_data_set:
+    :param y_data_set:
     :return:
     """
-    for i in X_data_set:
+    for i in x_data_set:
         i.append(1)
-    x_data_set = np.matrix(X_data_set)
-    y_data_set = np.matrix(Y_data_set)
+    x_data_set = np.matrix(x_data_set)
+    y_data_set = np.matrix(y_data_set)
     return x_data_set, y_data_set
 
 
@@ -43,7 +44,6 @@ def activate_function_derivative(x):
     :param x:
     :return:
     """
-
     return x * (1 - x)
 
 
@@ -55,17 +55,20 @@ def create_w(n):
     #print(w)
     return w
 
-def learning(x_data, y_data):
 
-
-    pass
+def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: int):
+    w = create_w(n)
+    print(f"this is starter Wight : {w}")
+    for i in range(0, iteration):
+        
+        pass
+    return w
 
 if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-    W = create_w(1)
-    print(f"this is starter Wight : {W}")
+
     print(f"x data sets : {X_data_set.shape} \n {X_data_set}")
     print(f"y data sets : {Y_data_set.shape} \n {Y_data_set}")
 
