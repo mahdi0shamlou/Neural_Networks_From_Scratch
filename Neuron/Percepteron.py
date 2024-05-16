@@ -1,6 +1,6 @@
 import numpy as np  # We need Numpy for matrix
 import random
-
+from sklearn.preprocessing import normalize
 
 def create_data_sets():
     """
@@ -8,10 +8,16 @@ def create_data_sets():
     :return:
     """
 
-    x_data_set = [[-2], [2], [3], [4], [5], [6], [7], [10], [-1]]  # you can replace this with your x_data_set
-    y_data_set = [
-        [(i[0] * 3) + 1] for i in x_data_set
-    ]  # you can replace this with your y_data_sets
+    x_data_set = [[-2], [2], [3], [4], [5], [6], [7], [10], [-1], [-4]]  # you can replace this with your x_data_set
+    y_data_set = []
+    for i in x_data_set:
+        if i[0] > 3:
+            y_data_set.append([1])
+        else:
+            y_data_set.append([-1])
+
+    #y_data_set = normalize(y_data_set, axis=0, norm='max')
+    #x_data_set = normalize(x_data_set, axis=0, norm='max')
     return x_data_set, y_data_set
 
 
@@ -38,37 +44,50 @@ def activate_function(net):
     return 1 / (1 + np.exp(-net))
 
 
-def activate_function_derivative(x):
+def activate_function_derivative(net):
     """
     computing derivative to the Sigmoid function
     :param x:
     :return:
     """
-    return x * (1 - x)
+    return np.exp(-net) / ( (1+np.exp(-net)) * (1+np.exp(-net)) )
 
 
 def create_w(n):
+    """
+    this methode get number of input layer and create random wight with it
+    :param n:
+    :return:
+    """
     w = []
     for i in range(0, n+1):
-        w.append(random.randint(-1,1))
+        w.append(random.uniform(-1, 1))
     w = np.matrix(w)
-    #print(w)
     return w
 
 
 def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: int):
+
     w = create_w(n)
     print(f"this is starter Wight : {w}")
+    print(f"this is claculet with {w} -> {w.dot(x_data[0].T)}")
+
     for i in range(0, iteration):
-        
-        pass
+        net = w.dot(x_data.T)
+        print(net)
+        error = y_data - activate_function(net)
+        adjustments = np.dot(x_data.T, error * activate_function_derivative(y_data))
+        print(adjustments)
+
     return w
+
 
 if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-
     print(f"x data sets : {X_data_set.shape} \n {X_data_set}")
     print(f"y data sets : {Y_data_set.shape} \n {Y_data_set}")
+    w = learning(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=10000)
+
 
