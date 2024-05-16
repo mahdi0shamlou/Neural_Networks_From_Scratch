@@ -119,13 +119,11 @@ def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: in
         for z in range(0, n+1):
             new_nets = w.item(z) * x_data[rand_num].item(z)
             difs = activate_function_derivative(new_nets)
-            #print(new_nets)
-            #print(difs)
-            adjs_add = error*difs*x_data[rand_num].item(0)
+            adjs_add = error*difs*x_data[rand_num].item(0) # find how much should change for wight
             w_new_adj.append(adjs_add.item(0))
-            #print(error*difs*x_data[rand_num].item(0))
+
         w_new_adj = np.matrix(w_new_adj)
-        w = w + w_new_adj
+        w = w + w_new_adj # optimize wight
         print(w)
         print(w_new_adj)
         print(w)
