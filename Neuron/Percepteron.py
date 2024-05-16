@@ -1,5 +1,5 @@
 import numpy as np  # We need Numpy for matrix
-
+import random
 
 def create_data_sets():
     """
@@ -37,11 +37,35 @@ def activate_function(net):
     return 1 / (1 + np.exp(-net))
 
 
+def activate_function_derivative(x):
+    """
+    computing derivative to the Sigmoid function
+    :param x:
+    :return:
+    """
+
+    return x * (1 - x)
+
+
+def create_w(n):
+    w = []
+    for i in range(0, n+1):
+        w.append(random.randint(-1,1))
+    w = np.matrix(w)
+    #print(w)
+    return w
+
+def learning(x_data, y_data):
+
+
+    pass
 
 if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
+    W = create_w(1)
+    print(f"this is starter Wight : {W}")
     print(f"x data sets : {X_data_set.shape} \n {X_data_set}")
     print(f"y data sets : {Y_data_set.shape} \n {Y_data_set}")
 
