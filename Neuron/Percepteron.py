@@ -1,8 +1,6 @@
 import numpy as np  # We need Numpy for matrix
 import random
-
-from numpy.distutils.system_info import x11_info
-from sklearn.preprocessing import normalize
+#from sklearn.preprocessing import normalize
 
 def create_data_sets():
     """
@@ -55,6 +53,11 @@ def activate_function_derivative(net):
     return np.exp(-net) / ((1 + np.exp(-net)) * (1 + np.exp(-net)))
 
 
+def activate_function_derivative_v2(net):
+
+    return activate_function(net) / (activate_function(net) * activate_function(net))
+
+
 def create_w(n):
     """
     this methode get number of input layer and create random wight with it
@@ -95,15 +98,26 @@ def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: in
 
 def learning_v2(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: int):  # create a new learning method
     wight = create_w(n)  #create wight matrix
-    
-    pass
+    print(f'This is starter wight matrix : {wight}')
+
+    for iterations in range(0, iteration):  #Create a loop for iteration
+
+        net_learning = np.dot(wight, x_data.T)  # This is net learning
+        resault_net = activate_function(net_learning)  # This is resault of net learning from actvation functions
+        error_learning = y_data - resault_net.T  # This is error matrix
+        difs = activate_function_derivative_v2(resault_net)
+
+        print(difs)
+        break
+    return wight
+
 
 
 if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-    w = learning(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=1000000)
+    w = learning_v2(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=1000000)
     net = w.dot(X_data_set.T)
     resault = activate_function(net)
     error = Y_data_set.T - resault
