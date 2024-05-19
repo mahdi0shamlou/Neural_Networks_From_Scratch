@@ -2,9 +2,10 @@
 This project is about the creation and development of nerual networks from scratch
 
 ### Perceptron.py
-this is a one singel perceptron and work and optimize 
+this is a one singel perceptron and has many activation function like sigmoid or tanh or liner or hardlimits for liner_regression or classification 
 
-
+> [!TIP]
+> How it Works ? This perceptron use from a error function (e = (d-y)**2) and try to optimize it.
 
 ### Perceptron_binary_classifire.py
 This file is a single perceptron that learns and optimizes.
