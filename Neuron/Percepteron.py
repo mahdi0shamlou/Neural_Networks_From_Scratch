@@ -69,58 +69,20 @@ def create_w(n):
 
 
 def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: int):
-    w = create_w(n)
-    print(f"this is starter Wight : {w}")
-    '''
-    
-    
-    print(f"this is X-data : {x_data[0]}")
-    print(f"this is Y-data : {y_data[0]}")
-    net = w.dot(x_data[0].T)
-    print(f"this is net of simpel one : {net}")
-    resalut = activate_function(net)
-    print(f"this is resualt of activation methode : {resalut}")
-    error = (y_data.item(0) - resalut)
-    print(f"this is error : {error}")
+    w = create_w(n)  # create starter wight
+    print(f"this is starter Wight : {w}")  # print starter wight
 
-    net_new = w.item(0) * x_data.item(0)
-    print(f"this is new net {net_new}")
-    new_dif = activate_function_derivative(net_new)
-    print(f"this is diff of activaet {new_dif}")
-
-    print("----------------------------")
-    print(f"this is way we should go {new_dif*error*x_data.item(0)*-1}")
-    
-    ##################################
-    print("\n-----------------------")
-    net = w.dot(x_data.T)
-    print(f"this is all of net : \n{net}\n-----------------------")
-    resalut = activate_function(net)
-    print(f"this is all of resalut : \n{resalut}\n-----------------------")
-    error = y_data.T-resalut
-    print(f"this is error {error}")
-    print(x_data.shape)
-    print(error.shape)
-    print(error.dot(x_data))
-    print(net.T.shape)
-    difs = map(activate_function_derivative, net.T)
-    print(list(difs))
-    difs = activate_function_derivative(net.T)
-    print(difs)
-    print(difs.shape)
-    '''
     for i in range(0, iteration):
-        rand_num = random.randint(0, 9)
-        #rand_num = 0
-        net = w.dot(x_data[rand_num].T)
-        resault = activate_function(net)
-        error = y_data[rand_num] - resault
-        w_new_adj = []
-        for z in range(0, n+1):
-            new_nets = w.item(z) * x_data[rand_num].item(z)
-            difs = activate_function_derivative(new_nets)
-            adjs_add = error*difs*x_data[rand_num].item(0) # find how much should change for wight
-            w_new_adj.append(adjs_add.item(0))
+        rand_num = random.randint(0, 9)  # create a random number for selecting a random learning data
+        net_learning = w.dot(x_data[rand_num].T)  # create a net that is coming from summation of wx
+        resault_learning = activate_function(net_learning)  # send that net to activation methode and get a resault
+        error_learning = y_data[rand_num] - resault_learning  # finding how much we have error
+        w_new_adj = []  # create a empty list for changing wight list
+        for z in range(0, n+1):  # This loop iterate all n(input)
+            new_nets = w.item(z) * x_data[rand_num].item(z)  # This is a net for finding how much wight should change
+            difs = activate_function_derivative(new_nets)  # Send that net to activation methode
+            adjs_add = error_learning * difs * x_data[rand_num].item(0)  # This is a formula for how much we should change wight
+            w_new_adj.append(adjs_add.item(0))  # Add how much we change for each wight
 
         w_new_adj = np.matrix(w_new_adj)
         w = w + w_new_adj # optimize wight
