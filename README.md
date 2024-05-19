@@ -5,7 +5,10 @@ This project is about the creation and development of nerual networks from scrat
 this is a one singel perceptron and has many activation function like sigmoid or tanh or liner or hardlimits for liner_regression or classification 
 
 > [!TIP]
-> How it Works ? This perceptron use from a error function (e = (d-y)**2) and try to optimize it.
+> How it Works ? This perceptron use from a error function (e = (d-y)**2) and tries to optimize it.
+
+> [!IMPORTANT]
+> HOw it optimize error function ? this perceptron get diff of error function base on wight and from a formula tries to optimze wight that formula is Wt+1 = Wt + k (diff(error_function))
 
 ### Perceptron_binary_classifire.py
 This file is a single perceptron that learns and optimizes.
