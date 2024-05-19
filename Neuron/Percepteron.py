@@ -84,16 +84,12 @@ def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: in
             adjs_add = error_learning * difs * x_data[rand_num].item(0)  # This is a formula for how much we should change wight
             w_new_adj.append(adjs_add.item(0))  # Add how much we change for each wight
 
-        w_new_adj = np.matrix(w_new_adj)
-        w = w + w_new_adj # optimize wight
-        print(w)
-        print(w_new_adj)
-        print(w)
+        w_new_adj = np.matrix(w_new_adj)  # Create a matrix form adj for changing wight
+        w = w + w_new_adj  # Add tow matrix for optimize wight
+        print(f'this is wight BEFOR changing : {w}')
+        print(f'this is how much we should change {w_new_adj}')
+        print(f'this is wight AFTER changing : {w}')
         print('---------------')
-
-
-        pass
-
     return w
 
 
@@ -101,22 +97,14 @@ if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-    #print(f"x data sets : {X_data_set.shape} \n {X_data_set}")
-    #print(f"y data sets : {Y_data_set.shape} \n {Y_data_set}")
-    w = learning(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=100000)
-
+    w = learning(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=1000000)
     net = w.dot(X_data_set.T)
-    print(net)
     resault = activate_function(net)
-    print(resault)
-    print(resault.shape)
-    print(Y_data_set.shape)
     error = Y_data_set.T - resault
-
     for i in range(0, 9):
         a = error.item(i)
         print("%.16f" % a)
 
-    #print(error)
+
 
 
