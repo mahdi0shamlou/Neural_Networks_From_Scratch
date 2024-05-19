@@ -93,6 +93,12 @@ def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: in
     return w
 
 
+def learning_v2(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: int):  # create a new learning method
+    wight = create_w(n)  #create wight matrix
+    
+    pass
+
+
 if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
