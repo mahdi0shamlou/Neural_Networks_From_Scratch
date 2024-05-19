@@ -16,7 +16,7 @@ def create_data_sets():
         if i[0] > 3:
             y_data_set.append([1])
         else:
-            y_data_set.append([-1])
+            y_data_set.append([0])
 
     #y_data_set = normalize(y_data_set, axis=0, norm='max')
     #x_data_set = normalize(x_data_set, axis=0, norm='max')
