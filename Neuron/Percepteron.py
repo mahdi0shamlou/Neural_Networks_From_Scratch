@@ -53,6 +53,17 @@ def activate_function_derivative(net):
     return np.exp(-net) / ((1 + np.exp(-net)) * (1 + np.exp(-net)))
 
 
+@np.vectorize
+def activate_function_v2(net):
+    """
+    this is simoid function for activation functions
+    :param net:
+    :return:
+    """
+    return 1 / (1 + np.exp(-net))
+
+
+@np.vectorize
 def activate_function_derivative_v2(net):
 
     return activate_function(net) / (activate_function(net) * activate_function(net))
@@ -103,7 +114,7 @@ def learning_v2(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration:
     for iterations in range(0, iteration):  #Create a loop for iteration
 
         net_learning = np.dot(wight, x_data.T)  # This is net learning
-        resault_net = activate_function(net_learning)  # This is resault of net learning from actvation functions
+        resault_net = activate_function_v2(net_learning)  # This is resault of net learning from actvation functions
         error_learning = y_data - resault_net.T  # This is error matrix
         difs = activate_function_derivative_v2(resault_net)
 
