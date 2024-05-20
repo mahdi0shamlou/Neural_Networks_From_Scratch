@@ -13,6 +13,10 @@ this is a one singel perceptron and has many activation function like sigmoid or
 >[!note]
 >How to finde diff of error_function ? every activation function has a uniqe diff base on wight and you should replace that diff in diff of error_function
 
+>[!WARNING]
+>if you want use this singel perceptron for liner regression you need to normaize you input and your output befor give to the nerun 
+
+
 ### Perceptron_binary_classifire.py
 This file is a single perceptron that learns and optimizes.
 This perceptron is used for classification.
