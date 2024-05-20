@@ -14,14 +14,14 @@ this is a one singel perceptron and has many activation function like sigmoid or
 >How to finde diff of error_function ? every activation function has a uniqe diff base on wight and you should replace that diff in diff of error_function
 
 ### Perceptron_binary_classifire.py
-This file is a single perceptron that learns and optimizes.
+This is Old version (if you want to you use newst version you can use from Perceptron.py that is newst version) and This file is a single perceptron that learns and optimizes.
 This perceptron is used for classification.
 
 > [!TIP]
 > How it works ?! This perceptron has a activation function and has a optimizer function if see any difrent between output of activation function and real data send this data to optimaizer function and get new Wight from it and use from this for new calculate
 
 ### Perceptron_liner_regression.py
-This file is a single perceptron that learns and optimizes.
+This is Old version (if you want to you use newst version you can use from Perceptron.py that is newst version) and This file is a single perceptron that learns and optimizes.
 This perceptron is used for liner regression.
 
 > [!TIP]

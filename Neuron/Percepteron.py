@@ -116,7 +116,7 @@ def learning_v2(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration:
     wight = create_w(n)  #create wight matrix
     print(f'This is starter wight matrix : {wight}')
     ones = np.ones((1, y_data.shape[0]))  # This is one matrix use for get avrage from w_delta
-    error_per_iterration = []
+    error_per_iterration = []  # This is error history
     for iterations in range(0, iteration):  #Create a loop for iteration
         net_learning = np.dot(wight, x_data.T)  # This is net learning
         resault_net = activate_function_v2(net_learning)  # This is resault of net learning from actvation functions
