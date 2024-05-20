@@ -114,7 +114,7 @@ def learning(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: in
 
 def learning_v2(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration: int):  # create a new learning method
     wight = create_w(n)  #create wight matrix
-    print(f'This is starter wight matrix : {wight}')
+    print(f'This is starter wight matrix : {wight}')  # This is printer of starter wight
     ones = np.ones((1, y_data.shape[0]))  # This is one matrix use for get avrage from w_delta
     error_per_iterration = []  # This is error history
     for iterations in range(0, iteration):  #Create a loop for iteration
@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-    w, error_per_iteration = learning_v2(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=20)
+    w, error_per_iteration = learning_v2(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=200)
     net = w.dot(X_data_set.T)
     resault = activate_function_v2(net)
     error = Y_data_set.T - resault

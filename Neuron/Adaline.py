@@ -58,7 +58,10 @@ def show(x , y, w):
 
 
     return x, y
+
+
 if __name__ == '__main__':
+
     W = Optimaize(x_data_set, y_data_set)
     print(f'Wight is -> {W}')
     show(x_data_set, y_data_set, W)
