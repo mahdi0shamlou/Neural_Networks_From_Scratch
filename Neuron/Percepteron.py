@@ -1,5 +1,6 @@
 import numpy as np  # We need Numpy for matrix
 import random
+from matplotlib import pyplot as plt
 #from sklearn.preprocessing import normalize
 
 def create_data_sets():
@@ -115,22 +116,23 @@ def learning_v2(x_data: np.matrix, y_data: np.matrix, n: int, z: int, iteration:
     wight = create_w(n)  #create wight matrix
     print(f'This is starter wight matrix : {wight}')
     ones = np.ones((1, y_data.shape[0]))  # This is one matrix use for get avrage from w_delta
+    error_per_iterration = []
     for iterations in range(0, iteration):  #Create a loop for iteration
         net_learning = np.dot(wight, x_data.T)  # This is net learning
         resault_net = activate_function_v2(net_learning)  # This is resault of net learning from actvation functions
         error_learning = y_data - resault_net.T  # This is error matrix
-        error_learning_avarage = np.dot(ones, error_learning)/y_data.shape[0]  # This is only for show to user avarage of error
+        error_learning_avarage = np.dot(ones, np.abs(error_learning))/y_data.shape[0]  # This is only for show to user avarage of error
         difs = activate_function_derivative_v2(resault_net)  # This is resault of diff of activation function
         w_delta = np.dot(error_learning, difs).dot(x_data)  # This matrix say how much should we change wight for each y
         adj_wight = np.dot(ones, w_delta)/y_data.shape[0]  # This line get avarage from w_delta
-        wight += adj_wight  # Change wight 
+        wight += adj_wight  # Change wight
         print(f"This is avarage of ERROR : {error_learning_avarage}")
         print(f'this is wight BEFOR changing : {wight}')
         print(f'this is how much we should change {adj_wight}')
         print(f'this is wight AFTER changing : {wight}')
         print('---------------')
-
-    return wight
+        error_per_iterration.append(error_learning.item(0))
+    return wight, error_per_iterration
 
 
 
@@ -138,14 +140,15 @@ if __name__ == '__main__':
 
     X_data_set, Y_data_set = create_data_sets()  # you can disable this line and replace your x and y
     X_data_set, Y_data_set = create_matrix_from_data_sets(X_data_set, Y_data_set)
-    w = learning_v2(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=10000)
+    w, error_per_iteration = learning_v2(x_data=X_data_set, y_data=Y_data_set, n=1, z=1, iteration=20)
     net = w.dot(X_data_set.T)
     resault = activate_function_v2(net)
     error = Y_data_set.T - resault
     for i in range(0, 9):
         a = error.item(i)
         print("%.16f" % a)
-
+    plt.plot(error_per_iteration, label="Error per iteration", color="red")
+    plt.show()
 
 
 
